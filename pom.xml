@@ -255,6 +255,9 @@
                     </plugin>
                 </plugins>
             </build>
+                 <build>
+                    <finalName>my-maven-docker-project</finalName>
+                 </build>
         </profile>
     </profiles>
 </project>
