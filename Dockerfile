@@ -25,7 +25,8 @@
 FROM tomcat:8.0
 MAINTAINER Vipin Kumar
 WORKDIR /opt
-COPY ./DevOps-Assessment /opt/DevOps-Assessment
+#COPY ./DevOps-Assessment /opt/DevOps-Assessment
+RUN git clone ssh://54.197.48.86/opt
 RUN mvn clean package
 COPY **/opt/DevOps-Assessment.war /usr/local/tomcat/webapps/
 EXPOSE 8080
