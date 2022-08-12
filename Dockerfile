@@ -26,5 +26,6 @@ FROM tomcat:8.0
 MAINTAINER Vipin Kumar
 WORKDIR /opt
 COPY ./DevOps-Assessment /opt/DevOps-Assessment
+RUN mvn clean package
 COPY **/opt/DevOps-Assessment.war /usr/local/tomcat/webapps/
 EXPOSE 8080
