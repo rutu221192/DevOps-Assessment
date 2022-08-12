@@ -28,8 +28,13 @@ MAINTAINER Rutu
 #COPY DevOps-Assessment /opt/DevOps-Assessment
 #RUN sudo git clone ssh://54.197.48.86/opt
 #RUN /bin/sh -c git clone ssh://54.197.48.86/opt
-RUN cd /opt \        
-           git clone https://github.com/Rutu2211/DevOps-Assessment.git
+#RUN cd /opt \        
+ #          git clone https://github.com/Rutu2211/DevOps-Assessment.git
+RUN mkdir -m 700 /ubuntu/.ssh; \
+  touch -m 600 /ubuntu/.ssh/known_hosts; \
+  ssh-keyscan github.com > /ubuntu/.ssh/known_hosts
+
+RUN --mount=type=ssh,id=github git clone git@github.com:https:Rutu2211/DevOps-Assessment.git
 WORKDIR /opt
 RUN mvn clean package
 COPY **/opt/DevOps-Assessment.war /usr/local/tomcat/webapps/
