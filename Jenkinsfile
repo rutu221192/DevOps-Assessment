@@ -14,7 +14,7 @@ pipeline{
 		stage('Build') {
 
 			steps {
-				sh 'docker build -t slkrt2211/testrepo:new .'
+				sh 'docker build -t slkrt2211/testrepo:latest .'
 			}
 		}
 
@@ -28,7 +28,7 @@ pipeline{
 		stage('Push') {
 
 			steps {
-				sh 'docker push slkrt2211/test1repo:new'
+				sh 'docker push slkrt2211/testrepo:latest'
 			}
 		}
 		
