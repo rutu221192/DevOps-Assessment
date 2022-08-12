@@ -23,11 +23,14 @@
 #ADD target/my-maven-docker-project.jar my-maven-docker-project.jar
 #ENTRYPOINT ["java", "-jar","my-maven-docker-project.jar"]
 FROM tomcat:8.0
-MAINTAINER Vipin Kumar
-WORKDIR /opt
-COPY DevOps-Assessment /opt/DevOps-Assessment
+MAINTAINER Rutu
+
+#COPY DevOps-Assessment /opt/DevOps-Assessment
 #RUN sudo git clone ssh://54.197.48.86/opt
 #RUN /bin/sh -c git clone ssh://54.197.48.86/opt
+RUN cd /opt \        
+           git clone https://github.com/Rutu2211/DevOps-Assessment.git
+WORKDIR /opt
 RUN mvn clean package
 COPY **/opt/DevOps-Assessment.war /usr/local/tomcat/webapps/
 EXPOSE 8080
