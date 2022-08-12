@@ -10,12 +10,13 @@ pipeline{
                 		checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[credentialsId: 'Rutu2211', url: 'https://github.com/Rutu2211/DevOps-Assessment.git']]])
 				sh "mvn clean install"
                 		sh "mvn -Dmaven.test.failure.ignore=true clean package"
-	    }
-	}
+	  
 
 	environment {
 		DOCKERHUB_CREDENTIALS=credentials('DOCKER_HUB_LOGIN')
 	}
+			}
+		}
 
 	stages {
 
