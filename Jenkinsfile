@@ -5,11 +5,11 @@ pipeline{
 		maven 'MAVEN'
 	}
 	stages {
-        stage('Build Maven') {
-            steps{
-                checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[credentialsId: 'Rutu2211', url: 'https://github.com/Rutu2211/DevOps-Assessment.git']]])
-		sh "mvn clean install"
-                sh "mvn -Dmaven.test.failure.ignore=true clean package"
+        	stage('Build Maven') {
+            		steps{
+                		checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[credentialsId: 'Rutu2211', url: 'https://github.com/Rutu2211/DevOps-Assessment.git']]])
+				sh "mvn clean install"
+                		sh "mvn -Dmaven.test.failure.ignore=true clean package"
 	    }
 	}
 
