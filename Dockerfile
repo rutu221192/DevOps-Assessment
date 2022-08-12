@@ -19,7 +19,12 @@
 
 #CMD ["view.py" ]
 
-FROM openjdk:8
-ADD target/my-maven-docker-project.jar my-maven-docker-project.jar
-ENTRYPOINT ["java", "-jar","my-maven-docker-project.jar"]
+#FROM openjdk:8
+#ADD target/my-maven-docker-project.jar my-maven-docker-project.jar
+#ENTRYPOINT ["java", "-jar","my-maven-docker-project.jar"]
+FROM tomcat:8.0
+MAINTAINER Vipin Kumar
+WORKDIR /opt
+COPY ./DevOps-Assessment /opt/DevOps-Assessment
+COPY **/opt/DevOps-Assessment.war /usr/local/tomcat/webapps/
 EXPOSE 8080
