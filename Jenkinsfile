@@ -1,6 +1,9 @@
 pipeline{
 
 	agent any
+	tools {
+		maven 'MAVEN'
+	}
 
 	environment {
 		DOCKERHUB_CREDENTIALS=credentials('DOCKER_HUB_LOGIN')
