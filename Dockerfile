@@ -22,20 +22,25 @@
 #FROM openjdk:8
 #ADD target/my-maven-docker-project.jar my-maven-docker-project.jar
 #ENTRYPOINT ["java", "-jar","my-maven-docker-project.jar"]
-FROM tomcat:8.0
-MAINTAINER Rutu
+#FROM tomcat:8.0
+#MAINTAINER Rutu
 
 #COPY DevOps-Assessment /opt/DevOps-Assessment
 #RUN sudo git clone ssh://54.197.48.86/opt
 #RUN /bin/sh -c git clone ssh://54.197.48.86/opt
 #RUN cd /opt \        
  #          git clone https://github.com/Rutu2211/DevOps-Assessment.git
-RUN mkdir -m 700 /home/ubuntu/.ssh; \
+#RUN mkdir -m 700 /home/ubuntu/.ssh; \
   touch -m 600 /home/ubuntu/.ssh/known_hosts; \
   ssh-keyscan github.com > /home/ubuntu/.ssh/known_hosts
 
-RUN --mount=type=ssh,id=github git clone git@github.com:https:Rutu2211/DevOps-Assessment.git
-WORKDIR /opt
-RUN mvn clean package
-COPY **/opt/DevOps-Assessment.war /usr/local/tomcat/webapps/
+#RUN --mount=type=ssh,id=github git clone git@github.com:https:Rutu2211/DevOps-Assessment.git
+#WORKDIR /opt
+#RUN mvn clean package
+#COPY **/opt/DevOps-Assessment.war /usr/local/tomcat/webapps/
+#EXPOSE 8080
+
+FROM openjdk
+COPY target/*.jar /
 EXPOSE 8080
+ENTRYPOINT ["java","-jar","/my-app-1.0-SNAPSHOT.jar"]
