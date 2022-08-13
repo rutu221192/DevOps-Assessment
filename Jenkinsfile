@@ -22,12 +22,12 @@ pipeline{
 			}
 		}
 
-		stage('Push') {
+// 		stage('Push') {
 
-			steps {
-				sh 'docker push darshanrami/rdrep:latest'
-			}
-		}
+// 			steps {
+// 				sh 'docker push darshanrami/rdrep:latest'
+// 			}
+// 		}
     }
 // 		stage('File transfer into ansible server') {
 
