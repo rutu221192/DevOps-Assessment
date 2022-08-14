@@ -20,11 +20,17 @@ pipeline {
                 }
             }
         }
-    }
+        stage('Push Docker Image') {
+            steps {
+                script {
+                    withCredentials([string(credentialsId: 'slkrt2211', variable: 'dockerhubpwd')]) {
+                    sh 'docker login -u slkrt2211 -p ${dockerhubpwd}'
 }
-
-
-
+                    sh 'docker push slkrt2211/testrepo'
+                }
+            }
+        }
+    }
 
 
 
