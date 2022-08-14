@@ -1,7 +1,7 @@
 FROM openjdk
-COPY target/*.jar /
+COPY target/*.war /
 EXPOSE 8080
-ENTRYPOINT ["java","-jar","/bookstore-example-1.0-SNAPSHOT.war"]
+ENTRYPOINT ["java","-war","/bookstore-example-1.0-SNAPSHOT.war"]
 
 
 
