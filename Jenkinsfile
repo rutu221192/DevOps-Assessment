@@ -11,7 +11,7 @@ pipeline{
 		stage('Build') {
 
 			steps {
-				sh 'docker build -t darshanrami/rdrep:latest .'
+				sh 'docker build -t slkrt2211/testrepo:latest .'
 			}
 		}
 
