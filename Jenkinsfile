@@ -52,7 +52,7 @@ pipeline {
 // 				sh 'docker push darshanrami/rdrep:latest'
 // 			}
 // 		}
-    }
+//    }
 // 		stage('File transfer into ansible server') {
 
 // 			steps {
