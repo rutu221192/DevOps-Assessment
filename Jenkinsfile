@@ -7,7 +7,7 @@ pipeline {
         stage('Build Maven') {
             steps {
                 checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[credentialsId: '5a559adf-5554-4e67-8374-63c469883fce', url: 'https://github.com/Rutu2211/DevOps-Assessment.git']]])
-               // sh "mvn -Dmaven.test.failure.ignore=true clean package"
+                sh "mvn -Dmaven.test.failure.ignore=true clean package"
 		sh "mvn install"    
 		sh "mvn clean package"
 		 
@@ -27,7 +27,7 @@ pipeline {
 //	agent any
 
 //	environment {
-		DOCKERHUB_CREDENTIALS=credentials('DOCKER_HUB_LOGIN')
+//		DOCKERHUB_CREDENTIALS=credentials('DOCKER_HUB_LOGIN')
 //	}
 
 //	stages {
