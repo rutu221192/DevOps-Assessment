@@ -34,8 +34,8 @@ pipeline {
             steps {
 		sh """
  		#!/bin/bash
- 		ssh ubuntu@174.129.182.100 /bin/bash << EOF
- 		helm install mytask demochart
+ 		ssh ubuntu@172.31.31.160 << EOF
+ 	//	helm install mytask demochart
 		exit
 		<< EOF
 		"""
