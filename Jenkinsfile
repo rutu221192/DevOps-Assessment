@@ -30,9 +30,9 @@ pipeline {
                 }
             }
         }
-	stage('File transfer into ansible server') {
+	stage('File transfer into minikube server') {
             steps {
-	        sh 'scp /var/lib/jenkins/workspace/jenkins-docker/demochart/* ubuntu@172.31.17.56:/home/ubuntu'
+	        sh 'scp /var/lib/jenkins/workspace/jenkins-docker/* ubuntu@172.31.17.56:/home/ubuntu'
 			}		
 	}
 	stage('Login into minikube server and run helm chart') {
