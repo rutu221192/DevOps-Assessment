@@ -40,8 +40,8 @@ pipeline {
 	    sh """
 	    #!/bin/bash
  	    ssh ubuntu@172.31.17.56 << EOF
-       	    sh 'cd /home/ubuntu/project'
-            sh 'helm install mytask demochart'
+       	    cd project
+            helm install mytask demochart
 	    exit
 	    << EOF
 	    """
