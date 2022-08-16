@@ -33,22 +33,20 @@ pipeline {
 	stage('File transfer into minikube server') {
             steps {
 	        sh 'scp -r /var/lib/jenkins/workspace/jenkins-docker/* ubuntu@172.31.17.56:/home/ubuntu/project'
-		cd /home/ubuntu/project
-                helm install mytask demochart
 			}		
-	}
-//	stage('Login into minikube server and run helm chart') {
-//            steps {
+	} 
+	stage('Login into minikube server and run helm chart') {
+            steps {
 //	    sh """
 // 	    #!/bin/bash
 // 	    ssh ubuntu@172.31.17.56 << EOF
-//	    cd /home/ubuntu/project
-//            helm install mytask demochart
+       	        cd /home/ubuntu/project
+                helm install mytask demochart
 //	    exit
 //	    << EOF
 //	    """
-//			}
-//		}
+			}
+		}
     }
 
 }
