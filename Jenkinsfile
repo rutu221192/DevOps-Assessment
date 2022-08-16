@@ -35,7 +35,7 @@ pipeline {
             sshagent(credentials: ['ssh-credentials-id']) {
             sh '''
                 [ -d ~/.ssh ] || mkdir ~/.ssh && chmod 0700 ~/.ssh
-                ssh-keyscan -t rsa,dsa example.com >> ~/.ssh/known_hosts
+                ssh-keyscan -t rsa,dsa ubuntu@172.31.17.56 >> ~/.ssh/known_hosts
                 ssh ubuntu@172.31.17.56 ...
             '''
           }
