@@ -37,14 +37,14 @@ pipeline {
 	} 
 	stage('Login into minikube server and run helm chart') {
             steps {
-//	    sh """
-// 	    #!/bin/bash
-// 	    ssh ubuntu@172.31.17.56 << EOF
-       	        cd /home/ubuntu/project
-                helm install mytask demochart
-//	    exit
-//	    << EOF
-//	    """
+	    sh """
+	    #!/bin/bash
+ 	    ssh ubuntu@172.31.17.56 << EOF
+       	    sh 'cd /home/ubuntu/project'
+            sh 'helm install mytask demochart'
+	    exit
+	    << EOF
+	    """
 			}
 		}
     }
