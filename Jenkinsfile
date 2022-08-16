@@ -31,24 +31,15 @@ pipeline {
             }
         }
 	stage('Login into minikube server and run helm chart') {
-	    steps {
-            sshagent(credentials: ['ssh-credentials-id']) {
-            sh '''
-                [ -d ~/.ssh ] || mkdir ~/.ssh && chmod 0700 ~/.ssh
-                ssh-keyscan -t rsa,dsa ubuntu@172.31.17.56 >> ~/.ssh/known_hosts
-                ssh ubuntu@172.31.17.56 ...
-            '''
-          }
-      }
-//            steps {
-//		sh """
-// 		#!/bin/bash
-// 		ssh ubuntu@172.31.31.160 << EOF
-//        	helm install mytask demochart
-//		exit
-//		<< EOF
-//		"""
-//			}
+            steps {
+	    sh """
+ 	    #!/bin/bash
+ 	    ssh ubuntu@172.31.31.160 << EOF
+            helm install mytask demochart
+	    exit
+	    << EOF
+	    """
+			}
 		}
     }
 
