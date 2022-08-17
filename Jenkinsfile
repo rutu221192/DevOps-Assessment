@@ -41,7 +41,7 @@ pipeline {
 	    #!/bin/bash
  	    ssh ubuntu@172.31.17.56 << EOF
        	    cd project
-            helm install rutu"-v.1.$BUILD_NUMBER" demochart
+            helm install rutu"v.1.$BUILD_NUMBER" demochart
 	    exit
 	    << EOF
 	    """
