@@ -42,7 +42,9 @@ pipeline {
  	    ssh ubuntu@172.31.17.56 << EOF
        	    cd project
             helm install "rutu-$BUILD_NUMBER" demochart
-	    timeout(time: 4)
+	    options {
+                timeout(time: 180, unit: "SECONDS")
+            }
 	    exit
 	    << EOF
 	    """
