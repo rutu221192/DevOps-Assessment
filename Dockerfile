@@ -1,7 +1,19 @@
-FROM openjdk
-COPY target/*.war /
+FROM ubuntu:latest
+LABEL "author"="Rutu"
+ENV DEBIAN_FRONTEND=noninteractive
+RUN apt update && apt install git -y
+RUN apt install apache2 -y
+CMD ["/usr/sbin/apache2ctl","-D","FOREGROUND"]
+WORKDIR /var/www/html
+VOLUME /var/log/apache2
 EXPOSE 8080
-ENTRYPOINT ["java","-war","/bookstore-example-1.0-SNAPSHOT.war"]
+ADD target/* /var/www/html/
+COPY target/* /var/www/html/
+
+#FROM openjdk
+#COPY target/*.war /
+#EXPOSE 8080
+#ENTRYPOINT ["java","-war","/bookstore-example-1.0-SNAPSHOT.war"]
 
 
 
