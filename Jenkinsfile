@@ -36,15 +36,15 @@ pipeline {
 			}		
 	} 
 	stage('Login into minikube server and run helm chart') {
+	    options {
+                timeout(time: 180, unit: "SECONDS")
+            }
             steps {
 	    sh """
 	    #!/bin/bash
  	    ssh ubuntu@172.31.17.56 << EOF
        	    cd project
             helm install "rutu-$BUILD_NUMBER" demochart
-	    options {
-                timeout(time: 180, unit: "SECONDS")
-            }
 	    exit
 	    << EOF
 	    """
