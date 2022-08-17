@@ -36,9 +36,6 @@ pipeline {
 			}		
 	} 
 	stage('Login into minikube server and run helm chart') {
-	    options {
-                timeout(time: 180, unit: "SECONDS")
-            }
             steps {
 	    sh """
 	    #!/bin/bash
