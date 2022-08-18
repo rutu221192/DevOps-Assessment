@@ -11,8 +11,11 @@ ADD target/* /var/www/html/
 COPY target/* /var/www/html/
 WORKDIR /var/lib/jenkins/workspace/jenkins-docker
 RUN \
-echo "ubuntu ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers && \
-sudo mvn package -Pproduction; sudo mvn -Djetty.port=8888 jetty:run
+     sed -i /etc/sudoers -re 's/^%sudo.*/%sudo ALL=(ALL:ALL) NOPASSWD: ALL/g' && \
+     sed -i /etc/sudoers -re 's/^root.*/root ALL=(ALL:ALL) NOPASSWD: ALL/g' && \
+     sed -i /etc/sudoers -re 's/^#includedir.*/## **Removed the include directive** ##"/g' && \
+     echo "ubuntu ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers && \
+     sudo mvn package -Pproduction; sudo mvn -Djetty.port=8888 jetty:run
 
 //USER ubuntu
 //RUN mvn package -Pproduction
