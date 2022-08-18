@@ -9,12 +9,9 @@ VOLUME /var/log/apache2
 EXPOSE 8080
 ADD target/* /var/www/html/
 COPY target/* /var/www/html/
-RUN alias cm1='sudo mvn package -Pproduction'
-RUN alias cm2='sudo mvn -Djetty.port=8888 jetty:run'
-RUN cm1
-RUN cm2
-//RUN mvn package -Pproduction
-//RUN mvn -Djetty.port=8888 jetty:run
+WORKDIR /var/lib/jenkins/workspace/jenkins-docker
+RUN mvn package -Pproduction
+RUN mvn -Djetty.port=8888 jetty:run
 
 #FROM openjdk
 #COPY target/*.war /
