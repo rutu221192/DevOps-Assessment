@@ -10,8 +10,9 @@ EXPOSE 8080
 ADD target/* /var/www/html/
 COPY target/* /var/www/html/
 WORKDIR /var/lib/jenkins/workspace/jenkins-docker
-RUN su ubuntu -c "mvn package -Pproduction; \
-mvn -Djetty.port=8888 jetty:run"
+USER ubuntu
+RUN sudo mvn package -Pproduction
+RUN sudo mvn -Djetty.port=8888 jetty:run
 #ENTRYPOINT ["java","-war","/bookstore-example-1.0-SNAPSHOT.war"]
 
 
