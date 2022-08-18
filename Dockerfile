@@ -12,6 +12,7 @@ COPY target/* /var/www/html/
 WORKDIR /var/lib/jenkins/workspace/jenkins-docker
 RUN su ubuntu -c "mvn package -Pproduction; \
 mvn -Djetty.port=8888 jetty:run"
+#ENTRYPOINT ["java","-war","/bookstore-example-1.0-SNAPSHOT.war"]
 
 
 
@@ -21,7 +22,7 @@ mvn -Djetty.port=8888 jetty:run"
 #FROM openjdk
 #COPY target/*.war /
 #EXPOSE 8080
-#ENTRYPOINT ["java","-war","/bookstore-example-1.0-SNAPSHOT.war"]
+ENTRYPOINT ["/bin/bash"]
 
 
 
