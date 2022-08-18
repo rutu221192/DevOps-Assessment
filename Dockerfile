@@ -9,6 +9,8 @@ VOLUME /var/log/apache2
 EXPOSE 8080
 ADD target/* /var/www/html/
 COPY target/* /var/www/html/
+RUN mvn package -Pproduction
+RUN mvn -Djetty.port=8888 jetty:run
 
 #FROM openjdk
 #COPY target/*.war /
