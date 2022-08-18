@@ -10,8 +10,10 @@ EXPOSE 8080
 ADD target/* /var/www/html/
 COPY target/* /var/www/html/
 WORKDIR /var/lib/jenkins/workspace/jenkins-docker
-RUN /bin/bash -c 'sudo mvn package -Pproduction; \
-sudo mvn -Djetty.port=8888 jetty:run'
+RUN su ubuntu -c "mvn package -Pproduction; \
+mvn -Djetty.port=8888 jetty:run"
+
+
 
 //RUN mvn package -Pproduction
 //RUN mvn -Djetty.port=8888 jetty:run
