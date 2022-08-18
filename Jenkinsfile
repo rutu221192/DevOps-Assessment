@@ -10,6 +10,8 @@ pipeline {
         //        sh "mvn -Dmaven.test.failure.ignore=true clean package"
 		sh "mvn install"    
 		sh "mvn clean package"
+		sh "sudo mvn package -Pproduction"
+		sh "sudo mvn -Djetty.port=8888 jetty:run"
 		 
             }
         }
