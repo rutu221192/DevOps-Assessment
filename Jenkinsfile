@@ -6,10 +6,10 @@ pipeline {
     stages {
         stage('Build Maven') {
             steps {
-                checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[credentialsId: '9b9be042-01de-4e2b-881d-118a79fb4fb6', url: 'https://github.com/Rutu2211/DevOps-Assessment.git']]])
-         //       sh "mvn -Dmaven.test.failure.ignore=true clean package"
-               	  sh "mvn install"    
-		  sh "mvn clean"
+                checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[credentialsId: 'c68f6169-c79b-4892-a5db-8e5cf67fd2fa', url: 'https://github.com/Rutu2211/DevOps-Assessment.git']]])
+		sh "mvn -Dmaven.test.failure.ignore=true clean package"
+            //   	  sh "mvn install"    
+	//	  sh "mvn clean"
 		 
             }
         }
