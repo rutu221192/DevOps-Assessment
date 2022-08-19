@@ -1,5 +1,4 @@
-FROM openjdk:11-jre-slim
-COPY target/bookstore-example-1.0-SNAPSHOT.war /usr/local/lib/bookstore-example-1.0-SNAPSHOT.war
-RUN cd /usr/local/lib/
-EXPOSE 8888
-ENTRYPOINT ["mvn","Djetty.port=8888","jetty:run"]
+FROM maven:3.6.0-jdk-11-slim AS build
+COPY src /home/app/src
+COPY pom.xml /home/app
+RUN mvn -f /home/app/pom.xml clean package
