@@ -3,5 +3,5 @@ WORKDIR /
 COPY pom.xml .
 ADD ./src/ ./src
 RUN ls
-CMD ["mvn package -Pproduction"]
-CMD ["mvn -Djetty.port=8888","jetty:run"]
+RUN mvn package -Pproduction
+RUN mvn -Djetty.port=8888 jetty:run
