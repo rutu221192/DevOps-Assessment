@@ -4,15 +4,7 @@ pipeline {
         maven 'MAVEN'
     }
     stages {
-        stage('Build Maven') {
-            steps {
-                checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[credentialsId: '3c3670ca-215d-4b0e-8505-ac93b8748089', url: 'https://github.com/rutu221192/DevOps-Assessment.git']]])
-		sh "mvn -Dmaven.test.failure.ignore=true clean package"
-            //   	  sh "mvn install"    
-	//	  sh "mvn clean"
-		 
-            }
-        }
+        
         stage('Build Docker Image') {
             steps {
                 script {
