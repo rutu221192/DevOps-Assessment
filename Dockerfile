@@ -4,4 +4,4 @@ WORKDIR /app
 ENTRYPOINT [ "mvn" ]
 CMD ["mvn install"]
 CMD ["mvn package -Pproduction"]
-CMD ["jetty:run","-Pproduction"]
+CMD ["jetty:run","-Djetty.port=8080"]
