@@ -4,4 +4,5 @@ WORKDIR /app
 ENTRYPOINT [ "mvn" ]
 CMD ["mvn install"]
 CMD ["mvn package -Pproduction"]
+CMD ["npm cache clean --force"]
 CMD ["jetty:run","-Djetty.port=8080"]
