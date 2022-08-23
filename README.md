@@ -1,6 +1,6 @@
 # Welcome to Vaadin Project 
 
-## Workflow
+## Workflow Test
 
 To compile the entire project, run "mvn install" in the project root.
 
