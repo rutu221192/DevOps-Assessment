@@ -33,7 +33,7 @@ pipeline {
 	    
  	    ssh ubuntu@3.91.95.201 << EOF
        	    cd project
-            helm install "rutu-$BUILD_NUMBER" demochart
+            sh "helm upgrade --install --force "rutu-$BUILD_NUMBER" demochart --set appimage=$slkrt2211/testrepo:latest"
 	    exit
 	    << EOF
 	    """
