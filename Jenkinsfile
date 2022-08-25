@@ -22,7 +22,28 @@ pipeline {
                 }
             }
         }
-	stage('File transfer into minikube server') {
+	    stage('File transfer into minikube server') {
+            steps {
+	    sh """
+	    ssh ubuntu@3.91.95.201 << EOF
+       	    sh "git clone https://github.com/rutu221192/DevOps-Assessment.git"
+	    sh "cd project"
+            sh "helm upgrade --install --force 'rutu-$BUILD_NUMBER' demochart --set appimage=slkrt2211/testrepo:latest"
+	    exit
+	    << EOF
+	    """
+			}
+		}
+    }
+
+}
+
+
+
+
+
+
+/** stage('File transfer into minikube server') {
             steps {
 	        sh 'scp -r /var/lib/jenkins/workspace/jenkins-docker/* ubuntu@3.91.95.201:/home/ubuntu/project'
 			}		
@@ -37,12 +58,7 @@ pipeline {
             sh "helm upgrade --install --force 'rutu-$BUILD_NUMBER' demochart --set appimage=slkrt2211/testrepo:latest"
 	    exit
 	    << EOF
-	    """
-			}
-		}
-    }
-
-}
+	    """ */
 
 //pipeline{
 
