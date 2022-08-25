@@ -24,14 +24,16 @@ pipeline {
         }
 	    stage('File transfer into minikube server') {
             steps {
-	    sh """
-	    ssh ubuntu@3.91.95.201 << EOF
-	    sh "cd /home/ubuntu && git clone https://github.com/rutu221192/DevOps-Assessment.git"
-	    sh "cd /home/ubuntu/DevOps-Assessment"
-            sh "helm upgrade --install --force rutu-deployment demochart --set appimage=slkrt2211/testrepo:latest"
-	    exit
-	    << EOF
-	    """
+	    	sh """
+	    	ssh ubuntu@3.91.95.201 << EOF
+	    	sh "sudo su"
+	    	sh "sudo apt update && apt upgrade -y"
+	    	sh "cd /home/ubuntu && git clone https://github.com/rutu221192/DevOps-Assessment.git"
+	    	sh "cd /home/ubuntu/DevOps-Assessment"
+            	sh "helm upgrade --install --force rutu-deployment demochart --set appimage=slkrt2211/testrepo:latest"
+	    	exit
+	    	<< EOF
+	    	"""
 			}
 		}
     }
