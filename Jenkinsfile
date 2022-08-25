@@ -26,9 +26,9 @@ pipeline {
             steps {
 	    sh """
 	    ssh ubuntu@3.91.95.201 << EOF
-       	    sh "git clone https://github.com/rutu221192/DevOps-Assessment.git"
+	    sh "cd /home/ubuntu/ && pwd && git clone https://github.com/rutu221192/DevOps-Assessment.git"
 	    sh "cd project"
-            sh "helm upgrade --install --force 'rutu-$BUILD_NUMBER' demochart --set appimage=slkrt2211/testrepo:latest"
+            sh "helm upgrade --install --force rutu-deployment demochart --set appimage=slkrt2211/testrepo:latest"
 	    exit
 	    << EOF
 	    """
